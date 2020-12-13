@@ -41,7 +41,9 @@ node {
             ls -la
             """
             // String shellStatus = sh(returnStatus: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json || true > output.log').toString().trim();
-            String shellStatus = sh(returnStatus: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/pass.json || true > output.log').toString().trim();
+            String shellStatus = sh(returnStatus: true, script: '''
+            export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/pass.json || true > output.log
+            ''').toString().trim();
             String output = readFile("${WORKSPACE}/app/output.log").trim()
             
             if(shellStatus == '0'){
