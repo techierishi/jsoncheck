@@ -24,13 +24,13 @@ node {
 
     stage('Build') {
             sh """
-            export PATH=$PATH:/usr/local/bin
             pwd
             ls -la ${WORKSPACE};
             ls -la ${WORKSPACE}/app;
             """
 
             sh """
+            export PATH=$PATH:/usr/local/bin
             pwd
             ls -la
             cd app;
