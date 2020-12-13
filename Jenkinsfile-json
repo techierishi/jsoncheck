@@ -42,7 +42,7 @@ node {
             """
             // String shellStatus = sh(returnStatus: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json || true > output.log').toString().trim();
             String shellStatus = sh(returnStatus: true, script: '''
-            export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/pass.json || true > output.log
+            export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/pass.json || true > output.log && ls -la
             ''').toString().trim();
             String output = readFile("${WORKSPACE}/output.log").trim()
             
