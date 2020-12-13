@@ -36,7 +36,7 @@ node {
             cd app;
             mkdir -p ${WORKSPACE}/app/jsonLintCheck;
             mv ${WORKSPACE}/jsonLintCheck/* ${WORKSPACE}/app/jsonLintCheck || true;
-            npm install -g jsonlint;
+            npm install jsonlint;
             pwd
             ls -la
             """
