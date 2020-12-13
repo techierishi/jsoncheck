@@ -40,10 +40,10 @@ node {
             pwd
             ls -la
             """
-            String stdError = sh(returnStderr: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json ').toString().trim();
-            // String stdError = sh(returnStdout: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json || true').toString().trim();
+            String shellStatus = sh(returnStatus: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json ').toString().trim();
+            // String shellStatus = sh(returnStatus: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json || true').toString().trim();
 
-            echo(stdError)
+            echo(shellStatus)
 
     }
     stage('Test') {
