@@ -1,5 +1,6 @@
 
 String repoUrl = 'git@github.com:techierishi/jsoncheck.git'
+String WORKSPACE = env.WORKSPACE
 
 stage('Checkout') {
     // checkout changelog: true, poll: false, scm: [$class: 'GitSCM',
