@@ -9,6 +9,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                sh 'echo "Checkout"'
+
             // checkout changelog: true, poll: false, scm: [$class: 'GitSCM',
             //     branches: [[name: 'origin/master']],
             //     doGenerateSubmoduleConfigurations: false,
