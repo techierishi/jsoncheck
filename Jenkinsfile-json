@@ -41,13 +41,13 @@ node {
             ls -la
             """
             String shellStatus = sh(returnStatus: true, script: '''
-            export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json > output.log || true
+            export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json > output.txt || true
             ''').toString().trim();
             
             // String shellStatus = sh(returnStatus: true, script: '''
-            // export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/pass.json > output.log || true
+            // export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/pass.json > output.txt || true
             // ''').toString().trim();
-            String output = readFile("${WORKSPACE}/output.log").trim()
+            String output = readFile("${WORKSPACE}/output.txt").trim()
             
             if(shellStatus == '0'){
                 echo('PASSED!')
