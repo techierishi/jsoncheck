@@ -2,18 +2,18 @@
 String repoUrl = 'git@github.com:techierishi/jsoncheck.git'
 
 stage('Checkout') {
-    checkout changelog: true, poll: false, scm: [$class: 'GitSCM',
-            branches: [[name: 'origin/master']],
-            doGenerateSubmoduleConfigurations: false,
-            extensions: [[$class: 'CloneOption',
-            depth: 10,
-            noTags: true,
-            reference: '',
-            shallow: false],
-            [$class: 'RelativeTargetDirectory',
-            relativeTargetDir: 'app']],
-            submoduleCfg: [],
-            userRemoteConfigs: [[url: repoUrl]]]
+    // checkout changelog: true, poll: false, scm: [$class: 'GitSCM',
+    //         branches: [[name: 'origin/master']],
+    //         doGenerateSubmoduleConfigurations: false,
+    //         extensions: [[$class: 'CloneOption',
+    //         depth: 10,
+    //         noTags: true,
+    //         reference: '',
+    //         shallow: false],
+    //         [$class: 'RelativeTargetDirectory',
+    //         relativeTargetDir: 'app']],
+    //         submoduleCfg: [],
+    //         userRemoteConfigs: [[url: repoUrl]]]
 }
 stage('Build') {
     sh """
