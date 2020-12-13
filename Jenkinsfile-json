@@ -8,42 +8,50 @@ pipeline {
     agent any
     stages {
         stage('Checkout') {
-        // checkout changelog: true, poll: false, scm: [$class: 'GitSCM',
-        //     branches: [[name: 'origin/master']],
-        //     doGenerateSubmoduleConfigurations: false,
-        //     extensions: [[$class: 'CloneOption',
-        //     depth: 10,
-        //     noTags: true,
-        //     reference: '',
-        //     shallow: false],
-        //     [$class: 'RelativeTargetDirectory',
-        //     relativeTargetDir: 'app']],
-        //     submoduleCfg: [],
-        //     userRemoteConfigs: [[url: repoUrl]]]
+            steps {
+            // checkout changelog: true, poll: false, scm: [$class: 'GitSCM',
+            //     branches: [[name: 'origin/master']],
+            //     doGenerateSubmoduleConfigurations: false,
+            //     extensions: [[$class: 'CloneOption',
+            //     depth: 10,
+            //     noTags: true,
+            //     reference: '',
+            //     shallow: false],
+            //     [$class: 'RelativeTargetDirectory',
+            //     relativeTargetDir: 'app']],
+            //     submoduleCfg: [],
+            //     userRemoteConfigs: [[url: repoUrl]]]
+            }
         }
         stage('Build') {
-            sh """
-        pwd
-        ls -la ${WORKSPACE};
-        ls -la ${WORKSPACE}/app;
-        """
+            steps {
+                sh """
+                pwd
+                ls -la ${WORKSPACE};
+                ls -la ${WORKSPACE}/app;
+                """
 
-            sh """
-        pwd
-        ls -la
-        cd app;
-        mkdir -p ${WORKSPACE}/app/jsonLintCheck;
-        mv ${WORKSPACE}/jsonLintCheck/* ${WORKSPACE}/app/jsonLintCheck || true;
-        sudo npm install -g jsonlint;
-        pwd
-        ls -la
-        """
+                sh """
+                pwd
+                ls -la
+                cd app;
+                mkdir -p ${WORKSPACE}/app/jsonLintCheck;
+                mv ${WORKSPACE}/jsonLintCheck/* ${WORKSPACE}/app/jsonLintCheck || true;
+                sudo npm install -g jsonlint;
+                pwd
+                ls -la
+                """
+            }
         }
         stage('Test') {
-            sh 'echo "Test"'
+            steps {
+                sh 'echo "Test"'
+            }
         }
         stage('Deploy') {
-            sh 'echo "Deploy"'
+            steps {
+                sh 'echo "Deploy"'
+            }
         }
     }
 }
