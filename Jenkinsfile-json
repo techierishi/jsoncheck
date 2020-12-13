@@ -2,7 +2,7 @@
 import hudson.model.*
 
 String repoUrl = 'git@github.com:techierishi/jsoncheck.git'
-String WORKSPACE = env.WORKSPACE
+String WORKSPACE = pwd()
 
 pipeline {
     agent any
