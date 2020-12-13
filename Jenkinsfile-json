@@ -40,7 +40,7 @@ node {
             pwd
             ls -la
             """
-            stdError = sh(returnStdout: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint fail.json').trim();
+            stdError = sh(returnStdout: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json').trim();
 
             echo(stdError)
 
