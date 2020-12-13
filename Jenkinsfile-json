@@ -1,12 +1,14 @@
 #!/usr/bin/env groovy
 import hudson.model.*
 
-String repoUrl = 'git@github.com:techierishi/jsoncheck.git'
-String WORKSPACE = pwd()
 
 pipeline {
     agent any
     stages {
+
+        String repoUrl = 'git@github.com:techierishi/jsoncheck.git'
+        String WORKSPACE = pwd()
+
         stage('Checkout') {
             steps {
                 sh 'echo "Checkout"'
