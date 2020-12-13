@@ -40,10 +40,18 @@ node {
             pwd
             ls -la
             """
-            // String shellStatus = sh(returnStatus: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json || true').toString().trim();
-            String shellStatus = sh(returnStatus: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/pass.json || true').toString().trim();
+            // String shellStatus = sh(returnStatus: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json || true > output.log').toString().trim();
+            String shellStatus = sh(returnStatus: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/pass.json || true > output.log').toString().trim();
 
-            echo(shellStatus)
+            String output = readFile('output.log').trim()
+            
+            if(shellStatus == '0'){
+                echo('PASSED!')
+                echo(output)
+            }else if(shellStatus == '1'){
+                echo('FAILED!')
+                echo(output)
+            }
 
     }
     stage('Test') {
