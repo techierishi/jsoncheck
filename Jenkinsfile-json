@@ -39,8 +39,11 @@ node {
             npm install jsonlint;
             pwd
             ls -la
-            node_modules/.bin/jsonlint fail.json
             """
+            stdError = sh(returnStdout: true, script: 'node_modules/.bin/jsonlint fail.json').trim();
+
+            echo(stdError)
+
     }
     stage('Test') {
             sh 'echo "Test"'
