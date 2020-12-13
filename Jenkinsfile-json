@@ -44,7 +44,7 @@ node {
             String shellStatus = sh(returnStatus: true, script: '''
             export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/pass.json || true > output.log
             ''').toString().trim();
-            String output = readFile("${WORKSPACE}/app/output.log").trim()
+            String output = readFile("${WORKSPACE}/output.log").trim()
             
             if(shellStatus == '0'){
                 echo('PASSED!')
