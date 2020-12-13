@@ -39,6 +39,7 @@ node {
             npm install jsonlint;
             pwd
             ls -la
+            node_modules/.bin/jsonlint fail.json
             """
     }
     stage('Test') {
