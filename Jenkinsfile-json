@@ -4,6 +4,7 @@ import hudson.model.*
 node {
     String repoUrl = 'git@github.com:techierishi/jsoncheck.git'
     String WORKSPACE = pwd()
+    tools {nodejs "nodejs"}
 
     stage('Checkout') {
             sh 'echo "Checkout"'
