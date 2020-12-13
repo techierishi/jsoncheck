@@ -43,7 +43,7 @@ node {
             // stdError = sh(returnStdout: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json ').trim();
             String stdError = sh(returnStdout: true, script: 'export PATH=$PATH:/usr/local/bin && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json || true').toString().trim();
 
-            sh "echo \${stdError}"
+            sh "echo ${stdError}"
 
     }
     stage('Test') {
