@@ -53,11 +53,11 @@ node {
             
             if(shellStatus == '0'){
                 echo('PASSED!')
-                echo(output)
             }else if(shellStatus == '1'){
                 echo('FAILED!')
-                echo(output)
             }
+            sh "cat ${WORKSPACE}/app/docs-linter-report.xml"
+
 
     }
     stage('Test') {
