@@ -40,14 +40,21 @@ node {
             pwd
             ls -la
             """
-            String shellStatus = sh(returnStatus: true, script: '''
-            export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/fail.json > output.txt || true
-            ''').toString().trim();
+
+            Random random = new java.util.Random();
+            Boolean bool =  random.nextBoolean();
+            String pf = (bool) ? 'pass.json' : 'fail.json';
+            echo('BOOL!')
+            echo(bool)
+
+            String shellStatus = sh(returnStatus: true, script: """
+            export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/${pf} > output.log || true
+            """).toString().trim();
             
             // String shellStatus = sh(returnStatus: true, script: '''
-            // export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/pass.json > output.txt || true
+            // export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/pass.json > output.log || true
             // ''').toString().trim();
-            String output = readFile("${WORKSPACE}/output.txt").trim()
+            String output = readFile("${WORKSPACE}/output.log").trim()
             
             if(shellStatus == '0'){
                 echo('PASSED!')
