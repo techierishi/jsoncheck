@@ -49,7 +49,7 @@ node {
             // """).toString().trim();
 
             String shellStatus = sh(returnStatus: true, script: """
-            export PATH=$PATH:/usr/local/bin && pwd && docs-linter || true
+            export PATH=$PATH:/usr/local/bin && pwd && docs-linter
             """).toString().trim();
 
             echo("shellStatus");
