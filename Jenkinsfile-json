@@ -47,9 +47,9 @@ node {
             // String shellStatus = sh(returnStatus: true, script: """
             // export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/${pf} > output.log || true
             // """).toString().trim();
-            
+
             String shellStatus = sh(returnStatus: true, script: """
-            export PATH=$PATH:/usr/local/bin && pwd && docs-linter json ${WORKSPACE}/app/ ${WORKSPACE}/app/ || true
+            export PATH=$PATH:/usr/local/bin && pwd && docs-linter || true
             """).toString().trim();
 
             echo("shellStatus");
