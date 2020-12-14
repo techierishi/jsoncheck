@@ -16,7 +16,6 @@ def docsLintCheck(lintType, inputDir, reportDir) {
 
   sh """
     cd app;
-    sudo npm install -g @ace/docs-linter@1.0.x;
     """
 
   sh """
