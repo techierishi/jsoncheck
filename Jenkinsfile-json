@@ -48,7 +48,7 @@ node {
             // export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/${pf} > output.log || true
             // """).toString().trim();
             
-            sh(returnStatus: true, script: """
+            sh( script: """
             export PATH=$PATH:/usr/local/bin && pwd && docs-linter json ${WORKSPACE}/app/ ${WORKSPACE}/app/
             """);
 
