@@ -14,10 +14,7 @@ def docsLintCheck(lintType, inputDir, reportDir) {
     ls -la ${WORKSPACE}/app;
     """
 
-  docsHelper.initNpmrc()
-
   sh """
-    cp .npmrc $HOME/.npmrc;
     cd app;
     sudo npm install -g @ace/docs-linter@1.0.x;
     """
