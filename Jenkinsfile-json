@@ -26,7 +26,7 @@ def docsLintCheck(lintType, inputDir, reportDir) {
     ls -la
     """
 
-  sh(script: "export PATH=$PATH:/usr/local/bin &&  docs-linter ${lintType} ${inputDir} ${reportDir}");
+  sh(script: "export PATH=$PATH:/usr/local/bin && docs-linter ${lintType} ${inputDir} ${reportDir}");
   sh "cat ${WORKSPACE}/app/docs-linter-report.xml"
 } // end docsLintCheck
 
@@ -55,7 +55,7 @@ node {
 
     stage('Build') {
 
-        docsLintCheck('json', "${WORKSPACE}/app/}", "${WORKSPACE}/app/");
+        docsLintCheck('json', "${WORKSPACE}/app/", "${WORKSPACE}/app/");
 
 
     }
