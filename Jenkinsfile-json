@@ -45,7 +45,7 @@ node {
             Boolean bool =  random.nextBoolean();
             String pf = (bool) ? 'pass.json' : 'fail.json';
             echo('BOOL!')
-            echo(bool)
+            echo(pf)
 
             String shellStatus = sh(returnStatus: true, script: """
             export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/${pf} > output.log || true
