@@ -48,19 +48,19 @@ node {
             // export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/${pf} > output.log || true
             // """).toString().trim();
             
-            String shellStatus = sh(returnStatus: true, script: """
+            sh(returnStatus: true, script: """
             export PATH=$PATH:/usr/local/bin && pwd && docs-linter json ${WORKSPACE}/app/ ${WORKSPACE}/app/
-            """).toString().trim();
+            """);
 
-            echo("shellStatus");
-            echo(shellStatus);
+            // echo("shellStatus");
+            // echo(shellStatus);
             
-            if(shellStatus == '0'){
-                echo('PASSED!')
-            }else if(shellStatus == '1'){
-                echo('FAILED!')
-            }
-            sh "cat ${WORKSPACE}/app/docs-linter-report.xml"
+            // if(shellStatus == '0'){
+            //     echo('PASSED!')
+            // }else if(shellStatus == '1'){
+            //     echo('FAILED!')
+            // }
+            // sh "cat ${WORKSPACE}/app/docs-linter-report.xml"
 
     }
     stage('Test') {
