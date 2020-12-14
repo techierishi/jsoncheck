@@ -34,9 +34,6 @@ node {
             pwd
             ls -la
             cd app;
-            mkdir -p ${WORKSPACE}/app/jsonLintCheck;
-            mv ${WORKSPACE}/jsonLintCheck/* ${WORKSPACE}/app/jsonLintCheck || true;
-            npm install jsonlint;
             pwd
             ls -la
             """
@@ -48,13 +45,11 @@ node {
             echo(pf)
 
             String shellStatus = sh(returnStatus: true, script: """
-            export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/${pf} > output.log || true
+            docs-linter json ${WORKSPACE}/app/ ${WORKSPACE}/app/ || true
             """).toString().trim();
-            
-            // String shellStatus = sh(returnStatus: true, script: '''
-            // export PATH=$PATH:/usr/local/bin && pwd && ${WORKSPACE}/app/node_modules/.bin/jsonlint ${WORKSPACE}/app/pass.json > output.log || true
-            // ''').toString().trim();
-            String output = readFile("${WORKSPACE}/output.log").trim()
+
+            echo("shellStatus");
+            echo(shellStatus);
             
             if(shellStatus == '0'){
                 echo('PASSED!')
